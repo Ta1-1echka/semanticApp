@@ -1,6 +1,5 @@
 package controller;
 
-import entity.User;
 import hibernate.user.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,10 +18,6 @@ public class LoginController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getLoginPage() {
-        User u = new User();
-        u.setLogin("Ta1-1echka");
-        u.setPassword("1111");
-        System.out.println("***"+userDao.getUserByLoginPassword(u).getProfile().getFirstname());
         return "login";
     }
 }
