@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    height: 15%;
+    background: #18184a;
+}
+
+.buts {
+    float: right;
+    width: 30%;
+}
+
+.wrap {
+    float: right;
+    width: 40%;
+}
+
+.reg_ent_but {
+    margin-top: 7%;
+    margin-right: 4%;
+    background: white;
+    min-width: 30%;
+    height: 40%;
+    border-radius: 4px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: Arial, Helvetica;
+    font-size: 14px;
+    color: #18184a;
+    font-weight: 600;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+
+}
+
+.search {
+    width: 90%;
+    height: 40%;
+    margin-top: 5%;
+    margin-right: 4%;
+    background: #444;
+    background: rgba(0, 0, 0, .2);
+    border-radius: 3px;
+    border: 1px solid #fff;
+}
+
+.search input {
+    width: 80%;
+    height: 100%;
+    float: left;
+    color: #ccc;
+    border: 0;
+    background: transparent;
+    border-radius: 3px 0 0 3px;
+    font-family: Arial, Helvetica;
+    font-size: 14px;
+
+}
+
+.search input:focus {
+    outline: 0;
+    background: transparent;
+}
+
+.search button {
+    position: relative;
+    float: right;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    width: 20%;
+    height: 100%;
+    color: #fff;
+    background: transparent;
+    border-left: 1px solid #fff;
+    border-radius: 0 3px 3px 0;
+    font-family: Arial, Helvetica;
+    font-size: 14px;
+    font-weight: 600;
+
+}
+
+.search button:hover {
+    background: #fff;
+    color: #444;
+}
+
+.buts button:hover {
+    background: #18184a;
+    color: white;
+}
+
+.search button:active , .buts button:active{
+    box-shadow: 0px 0px 12px 0px rgba(225, 225, 225, 1);
+}
+
+.search button:focus, .buts button:focus {
+    outline: 0;
+}
+
+table{
+    width: 40%;
+    margin: 0 auto;
+    border-spacing: inherit;
+}
+
+table img{
+    width: 30px;
+    height: 30px;
+}
+
+.tr_border{
+    border-bottom: 1px solid #18184a;
+    padding-top: 10px;
+}
+
+thead:hover{
+    background-color: #cccccc;
+}
+
+.file_name{
+    font-family: Arial, Helvetica;
+    font-size: 20px;
+    color: #18184a;
+    font-weight: 600;
+
+}
