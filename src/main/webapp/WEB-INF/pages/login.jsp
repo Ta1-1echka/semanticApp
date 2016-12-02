@@ -9,7 +9,7 @@
 <body>
 
 <%--<form name='form_login' action="j_spring_security_check" method="post">--%>
-<form>
+<form name='form_login' action="j_spring_security_check" method="post">
     <table class="login">
 
         <tr>

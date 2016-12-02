@@ -23,5 +23,5 @@
     </bean>
 
     <import resource="database.xml"/>
-    <!--<import resource="spring-security-config.xml"/>-->
+    <import resource="spring-security-config.xml"/>
 </beans>

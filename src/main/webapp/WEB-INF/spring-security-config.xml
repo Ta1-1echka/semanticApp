@@ -2,24 +2,23 @@
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/security
-	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	http://www.springframework.org/schema/security/spring-security.xsd">
 
     <!-- enable use-expressions -->
     <http use-expressions="true">
 
-        <intercept-url pattern="/signup**" access="isAuthenticated()" />
+        <intercept-url pattern="/register**" access="isAuthenticated()"/>
         <form-login login-page="/login"
                     default-target-url="pages/signup.jsp"
                     username-parameter="j_username"
                     password-parameter="j_password"
-                    authentication-failure-url="/login?error=true" />
-        <logout logout-success-url="/login?logout"  />
+                    authentication-failure-url="/login?error=true"/>
+        <logout logout-success-url="/login?logout"/>
         <!-- enable csrf protection -->
         <csrf/>
     </http>
-
     <!-- Select users and user_roles from database -->
     <jdbc-user-service id="jdbcUserService" data-source-ref="dataSource"
                        users-by-username-query="SELECT LOGIN, PASSWORD FROM USER WHERE LOGIN=?"
