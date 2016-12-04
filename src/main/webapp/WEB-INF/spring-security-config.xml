@@ -1,32 +1,48 @@
-<beans:beans xmlns="http://www.springframework.org/schema/security"
-             xmlns:beans="http://www.springframework.org/schema/beans"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans.xsd
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+         xmlns:b="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
 	http://www.springframework.org/schema/security
-	http://www.springframework.org/schema/security/spring-security.xsd">
+	http://www.springframework.org/schema/security/spring-security.xsd
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- enable use-expressions -->
-    <http use-expressions="true">
+    <http realm="JavaStudy example" use-expressions="false">
+       <!-- <intercept-url pattern="/register" access="ROLE_USER"/>-->
 
-        <intercept-url pattern="/register**" access="isAuthenticated()"/>
-        <form-login login-page="/login"
-                    default-target-url="pages/signup.jsp"
-                    username-parameter="j_username"
-                    password-parameter="j_password"
-                    authentication-failure-url="/login?error=true"/>
+        <form-login
+                login-page="/login"
+                default-target-url="/register"
+                authentication-failure-url="/login?error=1"
+                username-parameter="j_username"
+                password-parameter="j_password"/>
         <logout logout-success-url="/login?logout"/>
-        <!-- enable csrf protection -->
+        <remember-me
+                key="myAppKey"
+                user-service-ref="jdbcUserService"
+                token-repository-ref="tokenRepository"
+                remember-me-cookie="remember-me-cookieName"
+                remember-me-parameter="remember-me-parameter"
+                token-validity-seconds="1800"/>
+        <headers/>
         <csrf/>
     </http>
-    <!-- Select users and user_roles from database -->
+
+    <b:bean id="tokenRepository"
+            class="org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl">
+        <b:property name="dataSource" ref="dataSource"/>
+    </b:bean>
+
     <jdbc-user-service id="jdbcUserService" data-source-ref="dataSource"
-                       users-by-username-query="SELECT LOGIN, PASSWORD FROM USER WHERE LOGIN=?"
-                       authorities-by-username-query="SELECT U.LOGIN, 'ROLE_USER'
-        	 FROM AUTHORITIES A, USER U WHERE U.USERNAME = A.USERNAME AND U.USERNAME = ? "/>
+                       users-by-username-query="SELECT login, password, true FROM user WHERE login=?"
+                       authorities-by-username-query="SELECT U.LOGIN, 'ROLE_USER' FROM USER U WHERE U.LOGIN = ? "/>
+
 
     <authentication-manager alias="authenticationManager">
-        <authentication-provider user-service-ref="jdbcUserService"/>
+        <authentication-provider user-service-ref="jdbcUserService">
+            <password-encoder hash="md5"/>
+        </authentication-provider>
     </authentication-manager>
 
-</beans:beans>
+</b:beans>

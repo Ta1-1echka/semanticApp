@@ -7,6 +7,11 @@
 
     <!-- Сканирует пакет для поиска бинов -->
     <context:component-scan base-package="controller"/>
+    <context:component-scan base-package="service"/>
+    <context:component-scan base-package="converter"/>
+    <context:component-scan base-package="validation"/>
+
+    <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
     <!--  Включает Spring аннотации вроде @Autowired -->
     <context:annotation-config/>
 
@@ -21,7 +26,8 @@
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
     <import resource="database.xml"/>
     <import resource="spring-security-config.xml"/>
+    <import resource="message.xml"></import>
 </beans>
