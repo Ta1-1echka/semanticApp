@@ -11,12 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.support.RequestContextUtils;
 import service.user.UserDaoService;
 import validation.UserValidation;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 /**
  * Created by Tanya on 26.11.2016.
@@ -42,11 +38,9 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/error", method = RequestMethod.GET)
-    public ModelAndView getErrorSignupPage(@ModelAttribute("userDTO") UserDTO userDTO, HttpServletRequest request,
-                                           BindingResult bindingResult) {
+    public ModelAndView getErrorSignupPage(@ModelAttribute("userDTO") UserDTO userDTO, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("signup");
-        Map<String, ?> redAttr = RequestContextUtils.getInputFlashMap(request);
         modelAndView.addObject("userDTO", userDTO);
         //bindingResult = (BindingResult) redAttr.get("result");
         userValidation.validate(userDTO, bindingResult);
@@ -60,7 +54,6 @@ public class RegisterController {
         userValidation.validate(userDTO, bindingResult);
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userDTO", userDTO);
-            redirectAttributes.addFlashAttribute("result", bindingResult);
             returnStr = "redirect:/register/error";
         } else {
             userDaoService.saveUser(userDTO);
