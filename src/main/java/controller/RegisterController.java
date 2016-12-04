@@ -45,7 +45,6 @@ public class RegisterController {
         userValidation.validate(userDTO, bindingResult);
         ModelAndView modelAndView = new ModelAndView();
         if (bindingResult.hasErrors()) {
-            //modelAndView.addObject(bindingResult.getFieldErrors());
             modelAndView.setViewName("signup");
             modelAndView.addObject("userDTO", userDTO);
             return modelAndView;
