@@ -10,13 +10,26 @@
 <body>
 <header>
     <div class="buts">
-        <a href="/login">
-            <button type="button" class="reg_ent_but">Log in</button>
-        </a>
-        <a href="/register">
-            <button type="button" class="reg_ent_but">Sign up</button>
-        </a>
+        <security:authorize access="not hasRole('ROLE_USER')">
+            <a href="/login">
+                <button type="button" class="reg_ent_but">Log in</button>
+            </a>
+            <a href="/register">
+                <button type="button" class="reg_ent_but">Sign up</button>
+            </a>
+        </security:authorize>
 
+        <security:authorize access="hasRole('ROLE_USER')">
+            <a href="/login">
+                <button type="button" class="reg_ent_but">My account</button>
+            </a>
+
+            <form action="<c:url value='/login?logout'/>" method="post">
+                <button type="submit" class="reg_ent_but">Logout</button>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+
+        </security:authorize>
     </div>
 
     <div class="wrap">
@@ -46,10 +59,12 @@
     </tr>
     </thead>
     <security:authorize access="isRememberMe()">
-        <p><h3> login with "remember me" cookies</h3>
+        <p>
+        <h3> login with "remember me" cookies</h3>
     </security:authorize>
     <security:authorize access="hasRole('ROLE_USER')">
-        <p><h3> login with hasRole('ROLE_USER')</h3>
+        <p>
+        <h3> login with hasRole('ROLE_USER')</h3>
     </security:authorize>
 </table>
 </body>

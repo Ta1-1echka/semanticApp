@@ -54,6 +54,7 @@ public class RegisterController {
         userValidation.validate(userDTO, bindingResult);
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userDTO", userDTO);
+           // redirectAttributes.addFlashAttribute("bindingResult", bindingResult);
             returnStr = "redirect:/register/error";
         } else {
             userDaoService.saveUser(userDTO);
