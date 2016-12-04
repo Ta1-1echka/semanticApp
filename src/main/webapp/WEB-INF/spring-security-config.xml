@@ -8,11 +8,11 @@
 	http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <http realm="JavaStudy example" use-expressions="false">
-       <!-- <intercept-url pattern="/register" access="ROLE_USER"/>-->
+    <http realm="JavaStudy example" use-expressions="true">
+       <!-- <intercept-url pattern="/register" access="hasRole('USER')"/>-->
 
         <form-login
-                login-page="/login.jsp"
+                login-page="/login"
                 default-target-url="/"
                 authentication-failure-url="/login?error=1"
                 username-parameter="j_username"

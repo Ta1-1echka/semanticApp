@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Main</title>
@@ -15,6 +16,7 @@
         <a href="/register">
             <button type="button" class="reg_ent_but">Sign up</button>
         </a>
+
     </div>
 
     <div class="wrap">
@@ -43,7 +45,12 @@
         <td class="tr_border">Add by user</td>
     </tr>
     </thead>
-
+    <security:authorize access="isRememberMe()">
+        <p><h3> login with "remember me" cookies</h3>
+    </security:authorize>
+    <security:authorize access="hasRole('ROLE_USER')">
+        <p><h3> login with hasRole('ROLE_USER')</h3>
+    </security:authorize>
 </table>
 </body>
 </html>
