@@ -20,11 +20,7 @@
         </security:authorize>
 
         <security:authorize access="hasRole('ROLE_USER')">
-            <a href="/login">
-                <button type="button" class="reg_ent_but">My account</button>
-            </a>
-
-            <form action="<c:url value='/login?logout'/>" method="post">
+            <form action="<c:url value='j_spring_security_logout' />" method="post">
                 <button type="submit" class="reg_ent_but">Logout</button>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
@@ -39,7 +35,20 @@
         </form>
     </div>
 </header>
-<table>
+<security:authorize access="hasRole('ROLE_USER')">
+    <table class="menuTable">
+        <tr>
+            <td>My Account</td>
+        </tr>
+        <tr>
+            <td>My added documents</td>
+        </tr>
+        <tr>
+            <td>My faivorite documents</td>
+        </tr>
+    </table>
+</security:authorize>
+<table class="docTable">
     <thead>
     <tr>
         <td rowspan="2" class="tr_border"><img src="<c:url value="/resources/img/search.png"/>"/></td>
@@ -58,14 +67,15 @@
         <td class="tr_border">Add by user</td>
     </tr>
     </thead>
-    <security:authorize access="isRememberMe()">
-        <p>
-        <h3> login with "remember me" cookies</h3>
-    </security:authorize>
-    <security:authorize access="hasRole('ROLE_USER')">
-        <p>
-        <h3> login with hasRole('ROLE_USER')</h3>
-    </security:authorize>
+    <%--<security:authorize access="isRememberMe()">--%>
+        <%--<p>--%>
+        <%--<h3> login with "remember me" cookies</h3>--%>
+    <%--</security:authorize>--%>
+    <%--<security:authorize access="hasRole('ROLE_USER')">--%>
+        <%--<p>--%>
+        <%--<h3> login with hasRole('ROLE_USER')</h3>--%>
+    <%--</security:authorize>--%>
 </table>
+
 </body>
 </html>

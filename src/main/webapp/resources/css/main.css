@@ -11,6 +11,8 @@ header {
 .buts {
     float: right;
     width: 30%;
+    display: table-cell;
+    text-decoration: none;
 }
 
 .wrap {
@@ -20,9 +22,9 @@ header {
 
 .reg_ent_but {
     margin-top: 7%;
-    margin-right: 4%;
+    margin-right: 5%;
     background: white;
-    min-width: 30%;
+    min-width: 25%;
     height: 40%;
     border-radius: 4px;
     text-align: center;
@@ -93,7 +95,7 @@ header {
     color: white;
 }
 
-.search button:active , .buts button:active{
+.search button:active, .buts button:active {
     box-shadow: 0px 0px 12px 0px rgba(225, 225, 225, 1);
 }
 
@@ -101,30 +103,60 @@ header {
     outline: 0;
 }
 
-table{
-    width: 40%;
-    margin: 0 auto;
+.docTable {
+    width: 36%;
     border-spacing: inherit;
+    float: right;
+    margin-right: 34%;
 }
 
-table img{
+img {
     width: 30px;
     height: 30px;
 }
 
-.tr_border{
+.tr_border {
     border-bottom: 1px solid #18184a;
     padding-top: 10px;
 }
 
-thead:hover{
+thead:hover {
     background-color: #cccccc;
 }
 
-.file_name{
+.file_name {
     font-family: Arial, Helvetica;
     font-size: 20px;
     color: #18184a;
     font-weight: 600;
 
+}
+
+table.menuTable {
+    width: 20%;
+    border-spacing: inherit;
+    background: #18184a;
+    color: white;
+    font-family: Arial, Helvetica;
+    font-size: 16px;
+    min-height: 20%;
+    float: left;
+}
+
+table.menuTable td {
+    padding-left: 30px;
+    border: 1px solid #fff;
+    font-weight: 600;
+
+}
+
+.blockInline {
+    display: inline;
+    width: 40%
+}
+
+table.menuTable td:hover {
+    background: white;
+    color: #18184a;
+    border: 2px solid #18184a;
 }

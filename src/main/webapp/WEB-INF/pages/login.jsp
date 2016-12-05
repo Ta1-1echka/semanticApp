@@ -9,7 +9,7 @@
 <body>
 
 <%--<form name='form_login' action="j_spring_security_check" method="post">--%>
-<form  action="<c:url value='/login'/>" method="post">
+<form  action="<c:url value='j_spring_security_check' />" method="post">
     <table class="login">
 
         <tr>
@@ -29,7 +29,7 @@
             <td colspan="2"> <input type="checkbox" id="rememberme"  name="remember-me-parameter"/>Запомнить меня</td>
         </tr>
         <tr>
-            <td colspan="2" class="error"> <c:if test="${not empty param.error}">Неверно введены данные</c:if></td>
+            <td colspan="2" class="error"> <c:if test="${param.error==1}">Неверно введены данные</c:if></td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" name="login" class="login-submit" value="Login"></td>
