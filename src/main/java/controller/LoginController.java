@@ -1,10 +1,11 @@
 package controller;
 
-import hibernate.user.UserDao;
+import dao.user.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by Tanya on 26.11.2016.
@@ -17,7 +18,9 @@ public class LoginController {
     private UserDao userDao;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getLoginPage() {
-        return "login";
+    public ModelAndView getLoginPage() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        return modelAndView;
     }
 }

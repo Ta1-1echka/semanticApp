@@ -49,24 +49,20 @@
     </table>
 </security:authorize>
 <table class="docTable">
-    <thead>
-    <tr>
-        <td rowspan="2" class="tr_border"><img src="<c:url value="/resources/img/search.png"/>"/></td>
-        <td>Name of file</td>
-    </tr>
-    <tr>
-        <td class="tr_border">Add by user</td>
-    </tr>
-    </thead>
-    <thead>
-    <tr>
-        <td rowspan="2" class="tr_border"><img src="<c:url value="/resources/img/search.png"/>"/></td>
-        <td class="file_name">Name of file</td>
-    </tr>
-    <tr>
-        <td class="tr_border">Add by user</td>
-    </tr>
-    </thead>
+    <c:if test="${not empty docs}">
+        <c:forEach var="doc" items="${docs}" >
+            <thead>
+            <tr>
+                <td rowspan="2" class="tr_border"><img src="<c:url value="/resources/img/search.png"/>"/></td>
+                <td class="file_name"><c:out value="${doc.name}"/></td>
+            </tr>
+            <tr>
+                <td class="tr_border"><c:out value="Added by ${doc.user.login}"/></td>
+            </tr>
+            </thead>
+        </c:forEach>
+    </c:if>
+
     <%--<security:authorize access="isRememberMe()">--%>
         <%--<p>--%>
         <%--<h3> login with "remember me" cookies</h3>--%>

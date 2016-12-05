@@ -1,4 +1,4 @@
-package hibernate.user;
+package dao.user;
 
 import entity.User;
 
