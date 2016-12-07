@@ -28,6 +28,7 @@
                />
         <headers/>
         <csrf/>
+        <!--<csrf disabled="true"/>-->
     </http>
 
     <b:bean id="tokenRepository"

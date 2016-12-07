@@ -139,7 +139,7 @@ table.menuTable {
     color: white;
     font-family: Arial, Helvetica;
     font-size: 16px;
-    min-height: 20%;
+    min-height: 40%;
     float: left;
 }
 
@@ -147,6 +147,7 @@ table.menuTable td {
     padding-left: 30px;
     border: 1px solid #fff;
     font-weight: 600;
+
 
 }
 
@@ -159,4 +160,28 @@ table.menuTable td:hover {
     background: white;
     color: #18184a;
     border: 2px solid #18184a;
+}
+
+.addDocTable{
+    width: 36%;
+    border-spacing: inherit;
+    float: right;
+    margin-right: 34%;
+    color:  #18184a;
+    font-family: Arial, Helvetica;
+    font-size: 16px;
+}
+table.addDocTable input{
+    height: 36px;
+    font-size: 16px;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    padding: 0 8px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: #18184a;
+    border-radius: 10px;
+    outline: 0;
 }

@@ -44,6 +44,14 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public User getUserByLogin(String login) {
+        String hql = "FROM  entity.User WHERE login = :login";
+        String params[] = new String[]{"login"};
+        String values[] = new String[]{login};
+        return (User) hibernateTemplate.findByNamedParam(hql, params, values).get(0);
+    }
+
+    @Override
     public boolean isExist(User user) {
         String hql = "FROM  entity.User WHERE login = :login";
         String params[] = new String[]{"login"};

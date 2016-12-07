@@ -17,5 +17,7 @@ public interface UserDao {
 
     User getUserByLoginPassword(User user);
 
+    User getUserByLogin(String login);
+
     boolean isExist(User user);
 }

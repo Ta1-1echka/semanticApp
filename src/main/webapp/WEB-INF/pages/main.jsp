@@ -41,16 +41,23 @@
             <td>My Account</td>
         </tr>
         <tr>
-            <td>My added documents</td>
+            <td onclick="location.href='/addedDocs'"> My added documents</td>
         </tr>
         <tr>
-            <td>My faivorite documents</td>
+            <td>My favorite documents</td>
+        </tr>
+        <tr>
+            <td onclick="location.href='/doc'">Add a document</td>
+        </tr>
+        <tr>
+            <td onclick="location.href='/'">All documents</td>
         </tr>
     </table>
 </security:authorize>
-<table class="docTable">
-    <c:if test="${not empty docs}">
-        <c:forEach var="doc" items="${docs}" >
+
+<c:if test="${not empty docs}">
+    <table class="docTable">
+        <c:forEach var="doc" items="${docs}">
             <thead>
             <tr>
                 <td rowspan="2" class="tr_border"><img src="<c:url value="/resources/img/search.png"/>"/></td>
@@ -61,17 +68,42 @@
             </tr>
             </thead>
         </c:forEach>
-    </c:if>
+    </table>
+</c:if>
+<c:if test="${not empty profile}">
+    <table class="docTable">
 
-    <%--<security:authorize access="isRememberMe()">--%>
-        <%--<p>--%>
-        <%--<h3> login with "remember me" cookies</h3>--%>
-    <%--</security:authorize>--%>
-    <%--<security:authorize access="hasRole('ROLE_USER')">--%>
-        <%--<p>--%>
-        <%--<h3> login with hasRole('ROLE_USER')</h3>--%>
-    <%--</security:authorize>--%>
-</table>
+        <tr>
+            <td class="file_name">Firstname</td>
+            <td class="file_name"><c:out value="${profile.firstname}"/></td>
+        </tr>
+        <tr>
+            <td class="file_name">Lastname</td>
+            <td class="file_name"><c:out value="${profile.lastname}"/></td>
+        </tr>
+        <tr>
+            <td class="file_name">Birth</td>
+            <td class="file_name"><c:out value="${profile.birth}"/></td>
+        </tr>
+        <tr>
+            <td class="file_name">Email</td>
+            <td class="file_name"><c:out value="${profile.email}"/></td>
+        </tr>
+        <tr>
+            <td class="file_name">Sex</td>
+            <td class="file_name"><c:out value="${profile.sex}"/></td>
+        </tr>
+    </table>
+</c:if>
+<%--<security:authorize access="isRememberMe()">--%>
+<%--<p>--%>
+<%--<h3> login with "remember me" cookies</h3>--%>
+<%--</security:authorize>--%>
+<%--<security:authorize access="hasRole('ROLE_USER')">--%>
+<%--<p>--%>
+<%--<h3> login with hasRole('ROLE_USER')</h3>--%>
+<%--</security:authorize>--%>
+
 
 </body>
 </html>

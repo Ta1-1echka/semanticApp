@@ -37,15 +37,6 @@ public class RegisterController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/error", method = RequestMethod.GET)
-    public ModelAndView getErrorSignupPage(@ModelAttribute("userDTO") UserDTO userDTO, BindingResult bindingResult) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("signup");
-        modelAndView.addObject("userDTO", userDTO);
-        //bindingResult = (BindingResult) redAttr.get("result");
-        userValidation.validate(userDTO, bindingResult);
-        return modelAndView;
-    }
 
     @RequestMapping(value = "/user", method = {RequestMethod.POST, RequestMethod.GET})
     public String registerNewUser(@ModelAttribute("userDTO") UserDTO userDTO, BindingResult bindingResult,
@@ -53,9 +44,7 @@ public class RegisterController {
         String returnStr = null;
         userValidation.validate(userDTO, bindingResult);
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("userDTO", userDTO);
-           // redirectAttributes.addFlashAttribute("bindingResult", bindingResult);
-            returnStr = "redirect:/register/error";
+            returnStr = "signup";
         } else {
             userDaoService.saveUser(userDTO);
             returnStr = "redirect:/login";
