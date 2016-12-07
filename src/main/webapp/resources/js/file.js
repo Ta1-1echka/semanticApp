@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $("[type=file]").on("change", function () {
         // Name of file and placeholder
         var file = this.files[0].name;

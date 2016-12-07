@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Main</title>
@@ -70,31 +71,37 @@
         </c:forEach>
     </table>
 </c:if>
+<form:form modelAttribute="profile" action="update/profile" method="post">
 <c:if test="${not empty profile}">
     <table class="docTable">
 
         <tr>
             <td class="file_name">Firstname</td>
-            <td class="file_name"><c:out value="${profile.firstname}"/></td>
+            <td class="file_name"><form:input path="firstname"/></td>
         </tr>
         <tr>
             <td class="file_name">Lastname</td>
-            <td class="file_name"><c:out value="${profile.lastname}"/></td>
+            <td class="file_name"><form:input path="lastname"/></td>
         </tr>
         <tr>
             <td class="file_name">Birth</td>
-            <td class="file_name"><c:out value="${profile.birth}"/></td>
+            <td class="file_name"><form:input path="birth"/></td>
         </tr>
         <tr>
             <td class="file_name">Email</td>
-            <td class="file_name"><c:out value="${profile.email}"/></td>
+            <td class="file_name"><form:input path="email"/></td>
         </tr>
         <tr>
             <td class="file_name">Sex</td>
-            <td class="file_name"><c:out value="${profile.sex}"/></td>
+            <td class="file_name"><form:input path="sex"/></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="file_name"><input type="submit"></td>
+
         </tr>
     </table>
 </c:if>
+</form:form>
 <%--<security:authorize access="isRememberMe()">--%>
 <%--<p>--%>
 <%--<h3> login with "remember me" cookies</h3>--%>

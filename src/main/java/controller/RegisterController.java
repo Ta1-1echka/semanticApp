@@ -14,9 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import service.user.UserDaoService;
 import validation.UserValidation;
 
-/**
- * Created by Tanya on 26.11.2016.
- */
 @Controller
 @RequestMapping("/register")
 public class RegisterController {

@@ -14,7 +14,6 @@
     <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
     <!--  Включает Spring аннотации вроде @Autowired -->
     <context:annotation-config/>
-
     <!-- Dispatcher Servlet - определяет инфраструктуру обработки запросов сервлетом -->
 
     <!-- Включает поддержку @Controller и др. в Spring MVC -->

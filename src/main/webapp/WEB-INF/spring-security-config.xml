@@ -11,6 +11,7 @@
     <http realm="JavaStudy example" use-expressions="true">
        <!-- <intercept-url pattern="/register" access="hasRole('USER')"/>-->
 
+
         <form-login
                 login-page="/login"
                 login-processing-url="/j_spring_security_check"

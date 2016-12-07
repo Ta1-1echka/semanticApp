@@ -1,10 +1,14 @@
-package dao.user;
+package service.user;
 
+import dto.UserDTO;
 import entity.User;
 
-public interface UserDao {
+/**
+ * Created by Tanya on 03.12.2016.
+ */
+public interface UserDaoService {
 
-    User saveUser(User user);
+    User saveUser(UserDTO userDTO);
 
     void deleteUser(User user);
 
@@ -14,7 +18,7 @@ public interface UserDao {
 
     User getUserByLoginPassword(User user);
 
-    User getUserByLogin(String login);
-
     boolean isExist(User user);
+
+    User getByLogin(String login);
 }

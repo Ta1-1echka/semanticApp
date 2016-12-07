@@ -1,17 +1,16 @@
 package controller;
 
 
+import entity.Profile;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import service.document.DocumentDaoService;
+import service.profile.ProfileDaoService;
 import service.user.UserDaoService;
 
 import java.io.BufferedOutputStream;
@@ -30,6 +29,9 @@ public class MainController {
 
     @Autowired
     private UserDaoService userDaoService;
+
+    @Autowired
+    private ProfileDaoService profileDaoService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getMainPage() {
@@ -65,7 +67,7 @@ public class MainController {
                 fileName = file.getOriginalFilename();
                 byte[] bytes = file.getBytes();
                 BufferedOutputStream buffStream =
-                        new BufferedOutputStream(new FileOutputStream(new File( fileName)));
+                        new BufferedOutputStream(new FileOutputStream(new File(fileName)));
                 buffStream.write(bytes);
                 buffStream.close();
                 return "You have successfully uploaded " + fileName;
@@ -78,8 +80,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/profile")
-    public ModelAndView getUserProfile(Authentication authentication)
-    {
+    public ModelAndView getUserProfile(Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView();
         User user = userDaoService.getByLogin(authentication.getName());
         modelAndView.setViewName("main");
@@ -87,4 +88,11 @@ public class MainController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "update/profile")
+    public ModelAndView updateUserProfile(@ModelAttribute("profile") Profile profile) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("main");
+        profileDaoService.updateProfile(profile);
+        return modelAndView;
+    }
 }

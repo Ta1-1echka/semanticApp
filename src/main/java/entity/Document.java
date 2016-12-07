@@ -2,9 +2,6 @@ package entity;
 
 import javax.persistence.*;
 
-/**
- * Created by Tanya on 01.12.2016.
- */
 @Entity
 public class Document {
     private int idDocument;

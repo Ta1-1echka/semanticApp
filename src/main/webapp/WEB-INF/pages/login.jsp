@@ -7,8 +7,6 @@
     <link href="<c:url value="/resources/css/login.css"/>" type="text/css" rel="stylesheet">
 </head>
 <body>
-
-<%--<form name='form_login' action="j_spring_security_check" method="post">--%>
 <form  action="<c:url value='j_spring_security_check' />" method="post">
     <table class="login">
 

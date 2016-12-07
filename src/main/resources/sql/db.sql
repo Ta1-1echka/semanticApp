@@ -50,7 +50,6 @@ CREATE TABLE IF NOT EXISTS `userdocumentdb`.`profile` (
   ENGINE = InnoDB
   DEFAULT CHARACTER SET = utf8;
 
-
 -- -----------------------------------------------------
 -- Table `userdocumentdb`.`user_has_document`
 -- -----------------------------------------------------

@@ -5,9 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.sql.Date;
 
-/**
- * Created by Tanya on 01.12.2016.
- */
 @Entity
 @Table(name = "profile")
 public class Profile {

@@ -18,6 +18,8 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+
+
     <!-- Need to enable xml config Spring Security -->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>

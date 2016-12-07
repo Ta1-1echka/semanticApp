@@ -29,7 +29,6 @@ a {
     font-size: 2.3em;
     color: white;
 }
-
 .login input[type=text], input[type=password],
 .signup input[type=text], input[type=password], input[type=date], input[type=email], select {
     height: 36px;

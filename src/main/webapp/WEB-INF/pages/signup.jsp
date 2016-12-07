@@ -9,7 +9,6 @@
     <link href="<c:url value="/resources/css/login.css"/>" type="text/css" rel="stylesheet">
 </head>
 <body>
-<%--<spring:message code="login.exist" var="messageloginexist"/>--%>
 <form:form action="/register/user" method="post" modelAttribute="userDTO">
     <table class="signup">
 

@@ -3,9 +3,6 @@ package entity;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by Tanya on 01.12.2016.
- */
 @Entity
 @Table(name = "user")
 public class User {
