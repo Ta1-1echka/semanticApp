@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `userdocumentdb`.`profile` (
   `lastname` VARCHAR(255) NULL DEFAULT NULL,
   `birth` DATE NULL DEFAULT NULL,
   `email` VARCHAR(255) NULL DEFAULT NULL,
-  `sex` VARCHAR(1) NULL DEFAULT NULL,
+  `sex` VARCHAR(6) NULL DEFAULT NULL,
   PRIMARY KEY (`idUser`),
   INDEX `fk_profile_user1_idx` (`idUser` ASC),
   CONSTRAINT `fk_profile_user1`
