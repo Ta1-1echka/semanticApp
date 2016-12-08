@@ -1,13 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Login</title>
     <link href="<c:url value="/resources/css/login.css"/>" type="text/css" rel="stylesheet">
 </head>
 <body>
-<form  action="<c:url value='j_spring_security_check' />" method="post">
+<form:form  action="j_spring_security_check" method="post">
     <table class="login">
 
         <tr>
@@ -37,9 +38,9 @@
         </tr>
 
     </table>
-    <input type="hidden" name="${_csrf.parameterName}"
-           value="${_csrf.token}"/>
-</form>
+    <%--<input type="hidden" name="${csrf.parameterName}"--%>
+           <%--value="${csrf.token}"/>--%>
+</form:form>
 
 </body>
 </html>

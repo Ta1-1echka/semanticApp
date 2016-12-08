@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Main</title>
@@ -56,21 +57,18 @@
         </tr>
     </table>
 </security:authorize>
-<form method="post" enctype="multipart/form-data" action="/doc/add">
-
-    <label for="f01">Name</label>
-    <input id="f01" class="inputDocName" type="text" name="fileName"/>
-    <br/>
+<form:form method="post" enctype="multipart/form-data" action="/doc/add">
+    <%--<label for="f01">Name</label>--%>
+    <%--<input id="f01" class="inputDocName" type="text" name="fileName"/>--%>
+    <%--<br/>--%>
     <input id="f02" class="chooseFileBut" type="file" name="file" accept="application/msword"
            placeholder="Choose file"/>
     <label for="f02">Choose file</label>
     <br/>
     <input type="submit" id="f03" class="addFileBut"/>
     <label for="f03">Save file</label>
-
-
-    <%--<security:csrfInput/>--%>
-</form>
+    <security:csrfInput/>
+</form:form>
 
 </body>
 </html>

@@ -67,7 +67,7 @@ public class MainController {
                 fileName = file.getOriginalFilename();
                 byte[] bytes = file.getBytes();
                 BufferedOutputStream buffStream =
-                        new BufferedOutputStream(new FileOutputStream(new File(fileName)));
+                        new BufferedOutputStream(new FileOutputStream(new File("D://"+fileName)));
                 buffStream.write(bytes);
                 buffStream.close();
                 return "You have successfully uploaded " + fileName;
