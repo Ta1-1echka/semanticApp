@@ -7,9 +7,6 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Created by Tanya on 03.12.2016.
- */
 @Repository
 @Transactional(readOnly = false)
 public class ProfileDaoImpl implements ProfileDao {

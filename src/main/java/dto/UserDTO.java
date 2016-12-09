@@ -1,12 +1,7 @@
 package dto;
 
-import org.springframework.core.convert.ConversionFailedException;
-
 import java.sql.Date;
 
-/**
- * Created by Tanya on 03.12.2016.
- */
 public class UserDTO {
     private String login;
     private String password;

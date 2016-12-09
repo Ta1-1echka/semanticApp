@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.profile.ProfileDaoService;
 
-/**
- * Created by Tanya on 07.12.2016.
- */
 @Service
 public class ProfileDaoServiceImpl implements ProfileDaoService {
 

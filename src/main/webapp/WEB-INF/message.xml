@@ -24,7 +24,6 @@
             <ref bean="localeChangeInterceptor" />
         </property>
     </bean>
-
     <mvc:interceptors>
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <property name="paramName" value="lang" />

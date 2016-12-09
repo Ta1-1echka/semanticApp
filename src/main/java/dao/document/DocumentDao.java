@@ -4,9 +4,6 @@ import entity.Document;
 
 import java.util.List;
 
-/**
- * Created by Tanya on 05.12.2016.
- */
 public interface DocumentDao {
     Document saveDocument(Document document);
 

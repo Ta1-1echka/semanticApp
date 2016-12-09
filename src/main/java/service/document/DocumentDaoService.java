@@ -6,10 +6,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-/**
- * Created by Tanya on 05.12.2016.
- */
 public interface DocumentDaoService {
+
     Document saveDocument(MultipartFile file, String name, User user);
 
     void deleteDocument(Document document);

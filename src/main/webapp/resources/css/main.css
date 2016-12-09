@@ -135,7 +135,6 @@ table.docTable thead{
 
     border: solid 1px black;
 }
-
 thead:hover {
     background-color: #cccccc;
 }

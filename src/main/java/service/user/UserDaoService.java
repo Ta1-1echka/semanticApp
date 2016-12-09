@@ -3,9 +3,6 @@ package service.user;
 import dto.UserDTO;
 import entity.User;
 
-/**
- * Created by Tanya on 03.12.2016.
- */
 public interface UserDaoService {
 
     User saveUser(UserDTO userDTO);

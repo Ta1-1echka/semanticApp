@@ -34,7 +34,6 @@ public class RegisterController {
         return modelAndView;
     }
 
-
     @RequestMapping(value = "/user", method = {RequestMethod.POST, RequestMethod.GET})
     public String registerNewUser(@ModelAttribute("userDTO") UserDTO userDTO, BindingResult bindingResult,
                                   RedirectAttributes redirectAttributes) {

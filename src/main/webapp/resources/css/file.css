@@ -41,7 +41,6 @@ opacity */
     position: relative;
     width: 20%;
 }
-
 [type=file] + label, [type=submit]#f03 + label  {
     text-align: center;
     left: 7.35em;

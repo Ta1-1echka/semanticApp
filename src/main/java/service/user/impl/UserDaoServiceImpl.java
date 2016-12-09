@@ -24,7 +24,6 @@ public class UserDaoServiceImpl implements UserDaoService {
     @Autowired
     private UserConverter userConverter;
 
-
     @Override
     public User saveUser(UserDTO userDTO) {
         userDTO.setPassword(passwordEncoder.encodePassword(userDTO.getPassword(), null));

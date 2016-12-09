@@ -2,6 +2,7 @@ package entity;
 
 import javax.persistence.*;
 
+
 @Entity
 public class Document {
     private int idDocument;

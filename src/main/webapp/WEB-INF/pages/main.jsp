@@ -32,6 +32,7 @@
         </form>
     </div>
 </header>
+
 <c:if test="${not empty docs}">
     <table class="docTable">
         <c:forEach var="doc" items="${docs}">

@@ -57,6 +57,7 @@ public class DocumentDaoServiceImpl implements DocumentDaoService {
         return documentDao.saveDocument(document);
     }
 
+
     @Override
     public void deleteDocument(Document document) {
         documentDao.deleteDocument(document);

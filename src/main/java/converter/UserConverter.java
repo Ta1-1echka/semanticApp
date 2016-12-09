@@ -5,9 +5,6 @@ import entity.Profile;
 import entity.User;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by Tanya on 03.12.2016.
- */
 @Component
 public class UserConverter {
 

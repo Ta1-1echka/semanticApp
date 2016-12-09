@@ -9,9 +9,6 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import service.user.UserDaoService;
 
-/**
- * Created by Tanya on 03.12.2016.
- */
 @Component
 public class UserValidation implements Validator {
 

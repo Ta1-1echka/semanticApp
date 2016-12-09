@@ -18,7 +18,6 @@
     <!--  Включает Spring аннотации вроде @Autowired -->
     <context:annotation-config/>
     <!-- Dispatcher Servlet - определяет инфраструктуру обработки запросов сервлетом -->
-
     <!-- Включает поддержку @Controller и др. в Spring MVC -->
     <mvc:annotation-driven/>
 

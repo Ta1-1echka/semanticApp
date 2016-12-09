@@ -11,9 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by Tanya on 05.12.2016.
- */
 @Repository
 @Transactional(readOnly = false)
 public class DocumentDaoImpl implements DocumentDao {

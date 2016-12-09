@@ -61,7 +61,6 @@
     <form:hidden path="idUser"/>
     <form:hidden path="login"/>
     <form:hidden path="password"/>
-
     <label for="f01">Name</label>
     <input id="f01" class="inputDocName" type="text" name="name"/>
     <br/>
