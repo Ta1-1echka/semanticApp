@@ -53,13 +53,43 @@ public class DocumentController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "favorite")
+    public ModelAndView getUserFavoriteDocs(Authentication authentication) {
+        ModelAndView modelAndView = new ModelAndView();
+        User user = userDaoService.getByLogin(authentication.getName());
+        page.getCountOfListDocument(user.getDocs());
+        modelAndView.addObject("user", user);
+        modelAndView.addObject("begin", page.getBegin(1));
+        modelAndView.addObject("end", page.getEnd(1));
+        modelAndView.addObject("addedDocs", user.getDocs());
+        modelAndView.setViewName("document");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "addToFavorite/{idPage}/{idDoc}")
+    public ModelAndView addDocToFavoriteDocs(@PathVariable("idPage") int idPage,
+                                             @PathVariable("idDoc") int idDoc, Authentication authentication) {
+        ModelAndView modelAndView = new ModelAndView();
+        User user = userDaoService.getByLogin(authentication.getName());
+        page.getCountOfAllDocuments();
+        user.getDocs().add(documentDaoService.getDocumentById(idDoc));
+        userDaoService.updateUser(user);
+        modelAndView.addObject("user", user);
+        modelAndView.addObject("begin", page.getBegin(idPage));
+        modelAndView.addObject("end", page.getEnd(idPage));
+        modelAndView.addObject("docs",  documentDaoService.getTenDocuments(idPage));
+        modelAndView.addObject("id", idPage);
+        modelAndView.setViewName("document");
+        return modelAndView;
+    }
+
 
     @RequestMapping(value = "{id}")
-    public ModelAndView getByIdPageAddDocs(@PathVariable("id") int id) {
+    public ModelAndView getByIdPageAddDocs(Authentication authentication, @PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
         page.getCountOfAllDocuments();
-        System.out.println(page.getBegin(id));
-        System.out.println(page.getEnd(id));
+        User user = userDaoService.getByLogin(authentication.getName());
+        modelAndView.addObject("user", user);
         modelAndView.addObject("begin", page.getBegin(id));
         modelAndView.addObject("end", page.getEnd(id));
         modelAndView.addObject("docs", documentDaoService.getTenDocuments(id));
@@ -82,7 +112,7 @@ public class DocumentController {
         System.out.println(user.toString());
         System.out.println(name);
         documentDaoService.saveDocument(file, name, user);
-        modelAndView.addObject("message", file.getOriginalFilename()+" is successfully added");
+        modelAndView.addObject("message", file.getOriginalFilename() + " is successfully added");
         modelAndView.setViewName("document");
         return modelAndView;
 
