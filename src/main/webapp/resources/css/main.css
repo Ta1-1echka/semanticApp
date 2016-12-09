@@ -105,10 +105,12 @@ header {
 }
 
 .docTable {
-    width: 36%;
+    width: 30%;
     border-spacing: inherit;
+    border-collapse: collapse;
     float: right;
-    margin-right: 34%;
+    margin-right: 35%;
+    padding: 10px;
 }
 
 img {
@@ -116,9 +118,22 @@ img {
     height: 30px;
 }
 
-.tr_border {
-    border-bottom: 1px solid #18184a;
-    padding-top: 10px;
+table.docTable td {
+height: 30px;
+}
+
+.pages{
+    text-align: center;
+}
+
+.curHref{
+    color: red;
+    text-decoration: none;
+}
+
+table.docTable thead{
+
+    border: solid 1px black;
 }
 
 thead:hover {
@@ -163,7 +178,7 @@ table.menuTable td:hover {
     border: 2px solid #18184a;
 }
 
-.addDocTable{
+.addDocTable, .profileTable{
     width: 36%;
     border-spacing: inherit;
     float: right;
@@ -185,4 +200,47 @@ table.addDocTable input{
     color: #18184a;
     border-radius: 10px;
     outline: 0;
+}
+
+table.profileTable td{
+    height: 50px;
+
+}
+
+table.profileTable input[type=text], input[type=date], select, input[type=email]{
+    height: 36px;
+    font-size: 16px;
+    width: 70%;
+    margin-bottom: 10px;
+    -webkit-appearance: none;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    padding: 0 8px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: #18184a;
+    border-radius: 10px;
+    outline: 0;
+}
+
+table.profileTable input[type=submit]{
+    font-size: 20px;
+    width: 80%;
+    height: 46px;
+    margin-bottom: 10px;
+    -webkit-appearance: none;
+    background: #18184a;
+    border: 1px solid #d9d9d9;
+    padding: 0 8px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: white;
+    border-radius: 10px;
+    outline: 0;
+}
+
+table.profileTable input[type=submit]:hover{
+    background: #3399ff;
+    color: white;
 }

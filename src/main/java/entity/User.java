@@ -13,6 +13,17 @@ public class User {
     private List<Document> userDocs;
     private Profile profile;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "idUser=" + idUser +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", docs=" + docs +
+                ", userDocs=" + userDocs +
+                ", profile=" + profile +
+                '}';
+    }
 
     @ManyToMany(targetEntity = Document.class, cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinTable(name = "user_has_document",

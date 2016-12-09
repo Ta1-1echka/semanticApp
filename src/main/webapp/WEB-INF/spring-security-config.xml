@@ -9,9 +9,8 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <http realm="JavaStudy example" use-expressions="true">
-       <!-- <intercept-url pattern="/register" access="hasRole('USER')"/>-->
-
-
+        <intercept-url pattern="/document/**" access="hasRole('USER')"/>
+        <intercept-url pattern="/profile/**" access="hasRole('USER')"/>
         <form-login
                 login-page="/login"
                 login-processing-url="/j_spring_security_check"
@@ -26,10 +25,10 @@
                 token-repository-ref="tokenRepository"
                 remember-me-cookie="remember-me-cookieName"
                 remember-me-parameter="remember-me-parameter"
-               />
+        />
         <headers/>
-        <csrf/>
-        <!--<csrf disabled="true"/>-->
+        <!--<csrf/>-->
+        <csrf disabled="true"/>
     </http>
 
     <b:bean id="tokenRepository"

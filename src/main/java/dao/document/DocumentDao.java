@@ -18,4 +18,5 @@ public interface DocumentDao {
 
     List<Document> getTenDocuments(int page);
 
+    int getCountOfDocuments();
 }

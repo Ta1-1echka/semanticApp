@@ -44,30 +44,34 @@
             <td onclick="location.href='/profile'">My Account</td>
         </tr>
         <tr>
-            <td onclick="location.href='/addedDocs'"> My added documents</td>
+            <td onclick="location.href='/document/added'"> My added documents</td>
         </tr>
         <tr>
             <td onclick="location.href='/'">My favorite documents</td>
         </tr>
         <tr>
-            <td onclick="location.href='/'">Add a document</td>
+            <td onclick="location.href='/document/new/add'">Add a document</td>
         </tr>
         <tr>
-            <td onclick="location.href='/'">All documents</td>
+            <td onclick="location.href='/document'">All documents</td>
         </tr>
     </table>
 </security:authorize>
-<form:form method="post" enctype="multipart/form-data" action="/doc/add">
-    <%--<label for="f01">Name</label>--%>
-    <%--<input id="f01" class="inputDocName" type="text" name="fileName"/>--%>
-    <%--<br/>--%>
+<form:form method="post" enctype="multipart/form-data" action="/document/new/add" modelAttribute="user">
+    <form:hidden path="idUser"/>
+    <form:hidden path="login"/>
+    <form:hidden path="password"/>
+
+    <label for="f01">Name</label>
+    <input id="f01" class="inputDocName" type="text" name="name"/>
+    <br/>
     <input id="f02" class="chooseFileBut" type="file" name="file" accept="application/msword"
            placeholder="Choose file"/>
     <label for="f02">Choose file</label>
     <br/>
     <input type="submit" id="f03" class="addFileBut"/>
     <label for="f03">Save file</label>
-    <security:csrfInput/>
+
 </form:form>
 
 </body>

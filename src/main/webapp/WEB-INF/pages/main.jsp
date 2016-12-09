@@ -21,11 +21,7 @@
         </security:authorize>
 
         <security:authorize access="hasRole('ROLE_USER')">
-            <form action="<c:url value='j_spring_security_logout' />" method="post">
-                <button type="submit" class="reg_ent_but">Logout</button>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            </form>
-
+            <c:redirect url="/document"/>
         </security:authorize>
     </div>
 
@@ -36,81 +32,30 @@
         </form>
     </div>
 </header>
-<security:authorize access="hasRole('ROLE_USER')">
-    <table class="menuTable">
-        <tr>
-            <td>My Account</td>
-        </tr>
-        <tr>
-            <td onclick="location.href='/addedDocs'"> My added documents</td>
-        </tr>
-        <tr>
-            <td>My favorite documents</td>
-        </tr>
-        <tr>
-            <td onclick="location.href='/doc'">Add a document</td>
-        </tr>
-        <tr>
-            <td onclick="location.href='/'">All documents</td>
-        </tr>
-    </table>
-</security:authorize>
-
 <c:if test="${not empty docs}">
     <table class="docTable">
         <c:forEach var="doc" items="${docs}">
             <thead>
             <tr>
-                <td rowspan="2" class="tr_border"><img src="<c:url value="/resources/img/search.png"/>"/></td>
                 <td class="file_name"><c:out value="${doc.name}"/></td>
             </tr>
             <tr>
-                <td class="tr_border"><c:out value="Added by ${doc.user.login}"/></td>
+                <td><c:out value="Added by ${doc.user.login}"/></td>
             </tr>
             </thead>
         </c:forEach>
     </table>
-</c:if>
-<form:form modelAttribute="profile" action="update/profile" method="post">
-<c:if test="${not empty profile}">
     <table class="docTable">
+        <tr>
 
-        <tr>
-            <td class="file_name">Firstname</td>
-            <td class="file_name"><form:input path="firstname"/></td>
-        </tr>
-        <tr>
-            <td class="file_name">Lastname</td>
-            <td class="file_name"><form:input path="lastname"/></td>
-        </tr>
-        <tr>
-            <td class="file_name">Birth</td>
-            <td class="file_name"><form:input path="birth"/></td>
-        </tr>
-        <tr>
-            <td class="file_name">Email</td>
-            <td class="file_name"><form:input path="email"/></td>
-        </tr>
-        <tr>
-            <td class="file_name">Sex</td>
-            <td class="file_name"><form:input path="sex"/></td>
-        </tr>
-        <tr>
-            <td colspan="2" class="file_name"><input type="submit"></td>
-
+            <c:forEach var="i" begin="${begin}" end="${end}">
+                <td class="pages">
+                    <c:if test="${id == i}"><a href="/page/${i}" class="curHref"><c:out value="${i}"/></a></c:if>
+                    <c:if test="${id != i}"><a href="/page/${i}"><c:out value="${i}"/></a></c:if>
+                </td>
+            </c:forEach>
         </tr>
     </table>
 </c:if>
-</form:form>
-<%--<security:authorize access="isRememberMe()">--%>
-<%--<p>--%>
-<%--<h3> login with "remember me" cookies</h3>--%>
-<%--</security:authorize>--%>
-<%--<security:authorize access="hasRole('ROLE_USER')">--%>
-<%--<p>--%>
-<%--<h3> login with hasRole('ROLE_USER')</h3>--%>
-<%--</security:authorize>--%>
-
-
 </body>
 </html>

@@ -10,7 +10,7 @@ public class Document {
     private User user;
 
     @Id
-    @Column(name = "idDocument", nullable = false)
+    @Column(name = "idDocument")
     public int getIdDocument() {
         return idDocument;
     }
@@ -20,7 +20,7 @@ public class Document {
     }
 
     @Basic
-    @Column(name = "name", nullable = false, length = 255)
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -30,7 +30,7 @@ public class Document {
     }
 
     @Basic
-    @Column(name = "url", nullable = false, length = 255)
+    @Column(name = "url")
     public String getUrl() {
         return url;
     }
@@ -39,8 +39,8 @@ public class Document {
         this.url = url;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idUser", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinColumn(name = "idUser")
     public User getUser() {
         return user;
     }
