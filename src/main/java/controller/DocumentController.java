@@ -1,5 +1,6 @@
 package controller;
 
+import entity.Document;
 import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 import other.Page;
 import service.document.DocumentDaoService;
 import service.user.UserDaoService;
+
+import java.util.List;
 
 /**
  * Created by Tanya on 09.12.2016.
@@ -50,18 +53,24 @@ public class DocumentController {
         modelAndView.addObject("addedDocs", user.getUserDocs());
         modelAndView.addObject("begin", page.getBegin(id));
         modelAndView.addObject("end", page.getEnd(id));
+        modelAndView.addObject("id", id);
         return modelAndView;
     }
 
     @RequestMapping(value = "favorite")
-    public ModelAndView getUserFavoriteDocs(Authentication authentication) {
+    public String getUserFavoriteDocs(Authentication authentication) {
+        return "redirect:/document/favorite/1";
+    }
+
+    @RequestMapping(value = "favorite/{idPage}")
+    public ModelAndView getByIdPageFavoriteDocs(@PathVariable("idPage") int idPage, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView();
         User user = userDaoService.getByLogin(authentication.getName());
         page.getCountOfListDocument(user.getDocs());
-        modelAndView.addObject("user", user);
-        modelAndView.addObject("begin", page.getBegin(1));
-        modelAndView.addObject("end", page.getEnd(1));
-        modelAndView.addObject("addedDocs", user.getDocs());
+        modelAndView.addObject("begin", page.getBegin(idPage));
+        modelAndView.addObject("end", page.getEnd(idPage));
+        modelAndView.addObject("id", idPage);
+        modelAndView.addObject("favDocs", user.getDocs());
         modelAndView.setViewName("document");
         return modelAndView;
     }
@@ -77,7 +86,35 @@ public class DocumentController {
         modelAndView.addObject("user", user);
         modelAndView.addObject("begin", page.getBegin(idPage));
         modelAndView.addObject("end", page.getEnd(idPage));
-        modelAndView.addObject("docs",  documentDaoService.getTenDocuments(idPage));
+        modelAndView.addObject("docs", documentDaoService.getTenDocuments(idPage));
+        modelAndView.addObject("id", idPage);
+        modelAndView.setViewName("document");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "deleteFromFavorite/{idPage}/{idDoc}")
+    public ModelAndView deleteDocFromFavoriteDocs(@PathVariable("idPage") int idPage,
+                                                  @PathVariable("idDoc") int idDoc, Authentication authentication) {
+        ModelAndView modelAndView = new ModelAndView();
+        User user = userDaoService.getByLogin(authentication.getName());
+        System.out.println(user.getDocs().size());
+        List<Document> docs = user.getDocs();
+        for(int i = 0; i < docs.size(); i++)
+        {
+            if(docs.get(i).getIdDocument()==idDoc)
+            {
+                user.getDocs().remove(user.getDocs().get(i));
+                break;
+            }
+
+        }
+        System.out.println(user.getDocs().size());
+        userDaoService.updateUser(user);
+        modelAndView.addObject("user", user);
+        page.getCountOfListDocument(user.getDocs());
+        modelAndView.addObject("begin", page.getBegin(idPage));
+        modelAndView.addObject("end", page.getEnd(idPage));
+        modelAndView.addObject("favDocs", user.getDocs());
         modelAndView.addObject("id", idPage);
         modelAndView.setViewName("document");
         return modelAndView;
@@ -92,6 +129,7 @@ public class DocumentController {
         modelAndView.addObject("user", user);
         modelAndView.addObject("begin", page.getBegin(id));
         modelAndView.addObject("end", page.getEnd(id));
+        modelAndView.addObject("id", id);
         modelAndView.addObject("docs", documentDaoService.getTenDocuments(id));
         modelAndView.setViewName("document");
         return modelAndView;

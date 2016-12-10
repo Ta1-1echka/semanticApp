@@ -42,7 +42,7 @@ public class DocumentDaoImpl implements DocumentDao {
     @Override
     public List<Document> getTenDocuments(int page) {
         DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Document.class);
-        return (List<Document>) hibernateTemplate.findByCriteria(detachedCriteria, page * 10 - 10, page * 10-1);
+        return (List<Document>) hibernateTemplate.findByCriteria(detachedCriteria, page * 10 - 10, page * 10);
     }
 
     @Override
