@@ -5,7 +5,6 @@ import entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,7 +49,11 @@ public class DocumentController {
         User user = userDaoService.getByLogin(authentication.getName());
         modelAndView.addObject("user", user);
         page.getCountOfListDocument(user.getUserDocs());
-        modelAndView.addObject("addedDocs", user.getUserDocs());
+        if (user.getUserDocs().size() < id * 10)
+            modelAndView.addObject("addedDocs", user.getUserDocs().subList(id * 10 - 10, user.getUserDocs().size() - 1));
+        else
+            modelAndView.addObject("addedDocs", user.getUserDocs().subList(id * 10 - 10, id*10));
+
         modelAndView.addObject("begin", page.getBegin(id));
         modelAndView.addObject("end", page.getEnd(id));
         modelAndView.addObject("id", id);
@@ -99,10 +102,8 @@ public class DocumentController {
         User user = userDaoService.getByLogin(authentication.getName());
         System.out.println(user.getDocs().size());
         List<Document> docs = user.getDocs();
-        for(int i = 0; i < docs.size(); i++)
-        {
-            if(docs.get(i).getIdDocument()==idDoc)
-            {
+        for (int i = 0; i < docs.size(); i++) {
+            if (docs.get(i).getIdDocument() == idDoc) {
                 user.getDocs().remove(user.getDocs().get(i));
                 break;
             }
@@ -130,6 +131,7 @@ public class DocumentController {
         modelAndView.addObject("begin", page.getBegin(id));
         modelAndView.addObject("end", page.getEnd(id));
         modelAndView.addObject("id", id);
+        System.out.println("documentDaoService.getTenDocuments(id)=" + documentDaoService.getTenDocuments(id).size());
         modelAndView.addObject("docs", documentDaoService.getTenDocuments(id));
         modelAndView.setViewName("document");
         return modelAndView;
@@ -145,10 +147,11 @@ public class DocumentController {
     }
 
     @RequestMapping(value = "/new/add")
-    public ModelAndView addDoc(@RequestParam("file") MultipartFile file, @ModelAttribute("user") User user, @RequestParam("name") String name) {
+    public ModelAndView addDoc(@RequestParam("file") MultipartFile file,
+                               Authentication authentication, @RequestParam("name") String name) {
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println(user.toString());
-        System.out.println(name);
+        User user = userDaoService.getByLogin(authentication.getName());
+        System.out.println("user.getDocs().size()" + user.getDocs().size());
         documentDaoService.saveDocument(file, name, user);
         modelAndView.addObject("message", file.getOriginalFilename() + " is successfully added");
         modelAndView.setViewName("document");

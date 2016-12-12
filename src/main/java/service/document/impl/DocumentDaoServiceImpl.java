@@ -9,6 +9,7 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import service.document.DocumentDaoService;
+import solr.SolrService;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -45,6 +46,7 @@ public class DocumentDaoServiceImpl implements DocumentDaoService {
                                 fileName)));
                 buffStream.write(bytes);
                 buffStream.close();
+                new SolrService().n(new File(path + fileNameEncoder + fileName));
             } catch (Exception e) {
                 System.out.println("You failed to upload " + fileName + ": " + e.getMessage());
             }

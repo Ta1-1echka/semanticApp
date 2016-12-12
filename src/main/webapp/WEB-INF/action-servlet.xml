@@ -32,9 +32,9 @@
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
 
-
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <import resource="database.xml"/>
     <import resource="spring-security-config.xml"/>
     <import resource="message.xml"></import>
+    <!--<import resource="solr.xml"/>-->
 </beans>

@@ -12,7 +12,7 @@
 <header>
     <div class="buts">
         <security:authorize access="hasRole('ROLE_USER')">
-            <form action="/j_spring_security_logout" method="post">
+            <form action="<c:url value="/j_spring_security_logout"/>" method="post">
                 <button type="submit" class="reg_ent_but">Logout</button>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>

@@ -24,7 +24,7 @@
         </security:authorize>
 
         <security:authorize access="hasRole('ROLE_USER')">
-            <form action="<c:url value='j_spring_security_logout' />" method="post">
+            <form action="<c:url value="/j_spring_security_logout"/>" method="post">
                 <button type="submit" class="reg_ent_but">Logout</button>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
@@ -64,8 +64,11 @@
     <label for="f01">Name</label>
     <input id="f01" class="inputDocName" type="text" name="name"/>
     <br/>
-    <input id="f02" class="chooseFileBut" type="file" name="file" accept="application/msword"
+    <input id="f02" class="chooseFileBut" type="file" name="file"
            placeholder="Choose file"/>
+
+    <%--accept="application/msword"--%>
+
     <label for="f02">Choose file</label>
     <br/>
     <input type="submit" id="f03" class="addFileBut"/>
