@@ -49,12 +49,12 @@
     <table class="docTable">
         <tr>
 
-            <c:forEach var="i" begin="${begin}" end="${end}">
-                <td class="pages">
-                    <c:if test="${id == i}"><a href="/page/${i}" class="curHref"><c:out value="${i}"/></a></c:if>
-                    <c:if test="${id != i}"><a href="/page/${i}"><c:out value="${i}"/></a></c:if>
-                </td>
-            </c:forEach>
+            <%--<c:forEach var="i" begin="${begin}" end="${end}">--%>
+                <%--<td class="pages">--%>
+                    <%--<c:if test="${id == i}"><a href="/page/${i}" class="curHref"><c:out value="${i}"/></a></c:if>--%>
+                    <%--<c:if test="${id != i}"><a href="/page/${i}"><c:out value="${i}"/></a></c:if>--%>
+                <%--</td>--%>
+            <%--</c:forEach>--%>
         </tr>
     </table>
 </c:if>

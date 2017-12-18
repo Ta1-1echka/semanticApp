@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import other.Page;
+
 import service.document.DocumentDaoService;
 
 /**
@@ -16,9 +16,6 @@ import service.document.DocumentDaoService;
 @Controller
 @RequestMapping("/")
 public class MainController {
-
-    @Autowired
-    private Page page;
 
     @Autowired
     private DocumentDaoService documentDaoService;
@@ -33,9 +30,9 @@ public class MainController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("main");
         modelAndView.addObject("docs", documentDaoService.getTenDocuments(id));
-        page.getCountOfAllDocuments();
-        modelAndView.addObject("begin", page.getBegin(id));
-        modelAndView.addObject("end", page.getEnd(id));
+
+
+
         modelAndView.addObject("id", id);
         return modelAndView;
     }

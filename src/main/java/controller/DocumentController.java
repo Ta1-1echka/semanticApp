@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import other.Page;
 import service.document.DocumentDaoService;
 import service.user.UserDaoService;
 
@@ -25,9 +24,6 @@ public class DocumentController {
 
     @Autowired
     private UserDaoService userDaoService;
-
-    @Autowired
-    private Page page;
 
     @Autowired
     private DocumentDaoService documentDaoService;
@@ -48,14 +44,11 @@ public class DocumentController {
         modelAndView.setViewName("document");
         User user = userDaoService.getByLogin(authentication.getName());
         modelAndView.addObject("user", user);
-        page.getCountOfListDocument(user.getUserDocs());
         if (user.getUserDocs().size() < id * 10)
             modelAndView.addObject("addedDocs", user.getUserDocs().subList(id * 10 - 10, user.getUserDocs().size() - 1));
         else
             modelAndView.addObject("addedDocs", user.getUserDocs().subList(id * 10 - 10, id*10));
 
-        modelAndView.addObject("begin", page.getBegin(id));
-        modelAndView.addObject("end", page.getEnd(id));
         modelAndView.addObject("id", id);
         return modelAndView;
     }
@@ -69,9 +62,6 @@ public class DocumentController {
     public ModelAndView getByIdPageFavoriteDocs(@PathVariable("idPage") int idPage, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView();
         User user = userDaoService.getByLogin(authentication.getName());
-        page.getCountOfListDocument(user.getDocs());
-        modelAndView.addObject("begin", page.getBegin(idPage));
-        modelAndView.addObject("end", page.getEnd(idPage));
         modelAndView.addObject("id", idPage);
         modelAndView.addObject("favDocs", user.getDocs());
         modelAndView.setViewName("document");
@@ -83,12 +73,9 @@ public class DocumentController {
                                              @PathVariable("idDoc") int idDoc, Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView();
         User user = userDaoService.getByLogin(authentication.getName());
-        page.getCountOfAllDocuments();
         user.getDocs().add(documentDaoService.getDocumentById(idDoc));
         userDaoService.updateUser(user);
         modelAndView.addObject("user", user);
-        modelAndView.addObject("begin", page.getBegin(idPage));
-        modelAndView.addObject("end", page.getEnd(idPage));
         modelAndView.addObject("docs", documentDaoService.getTenDocuments(idPage));
         modelAndView.addObject("id", idPage);
         modelAndView.setViewName("document");
@@ -112,9 +99,7 @@ public class DocumentController {
         System.out.println(user.getDocs().size());
         userDaoService.updateUser(user);
         modelAndView.addObject("user", user);
-        page.getCountOfListDocument(user.getDocs());
-        modelAndView.addObject("begin", page.getBegin(idPage));
-        modelAndView.addObject("end", page.getEnd(idPage));
+
         modelAndView.addObject("favDocs", user.getDocs());
         modelAndView.addObject("id", idPage);
         modelAndView.setViewName("document");
@@ -125,11 +110,10 @@ public class DocumentController {
     @RequestMapping(value = "{id}")
     public ModelAndView getByIdPageAddDocs(Authentication authentication, @PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
-        page.getCountOfAllDocuments();
+
         User user = userDaoService.getByLogin(authentication.getName());
         modelAndView.addObject("user", user);
-        modelAndView.addObject("begin", page.getBegin(id));
-        modelAndView.addObject("end", page.getEnd(id));
+
         modelAndView.addObject("id", id);
         System.out.println("documentDaoService.getTenDocuments(id)=" + documentDaoService.getTenDocuments(id).size());
         modelAndView.addObject("docs", documentDaoService.getTenDocuments(id));

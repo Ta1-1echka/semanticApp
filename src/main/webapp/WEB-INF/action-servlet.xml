@@ -10,9 +10,9 @@
     <context:component-scan base-package="service"/>
     <context:component-scan base-package="converter"/>
     <context:component-scan base-package="validation"/>
-    <context:component-scan base-package="other"/>
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="classpath:project.properties" name="propertiesBean"/>
+
+    <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"-->
+          <!--p:location="classpath:project.properties" name="propertiesBean"/>-->
 
     <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
     <!--  Включает Spring аннотации вроде @Autowired -->

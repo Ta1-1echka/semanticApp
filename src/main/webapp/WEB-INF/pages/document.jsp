@@ -82,17 +82,6 @@
             </c:forEach>
         </table>
 
-        <table class="docTable">
-            <tr>
-                <c:forEach var="i" begin="${begin}" end="${end}">
-                    <td class="pages">
-                        <c:if test="${id == i}"><a href="/document/${i}" class="curHref"><c:out
-                                value="${i}"/></a></c:if>
-                        <c:if test="${id != i}"><a href="/document/${i}"><c:out value="${i}"/></a></c:if>
-                    </td>
-                </c:forEach>
-            </tr>
-        </table>
     </form:form>
 </c:if>
 <c:if test="${not empty addedDocs}">
@@ -106,17 +95,6 @@
                 <td><c:out value="Added by ${doc.user.login}"/></td>
             </tr>
         </c:forEach>
-    </table>
-    <table class="docTable">
-        <tr>
-            <c:forEach var="i" begin="${begin}" end="${end}">
-                <td class="pages">
-                    <c:if test="${id == i}"><a href="/document/added/${i}" class="curHref"><c:out
-                            value="${i}"/></a></c:if>
-                    <c:if test="${id != i}"><a href="/document/added/${i}"><c:out value="${i}"/></a></c:if>
-                </td>
-            </c:forEach>
-        </tr>
     </table>
 </c:if>
 
@@ -137,17 +115,7 @@
             </tr>
         </c:forEach>
     </table>
-    <table class="docTable">
-        <tr>
-            <c:forEach var="i" begin="${begin}" end="${end}">
-                <td class="pages">
-                    <c:if test="${id == i}"><a href="/document/favorite/${i}" class="curHref"><c:out
-                            value="${i}"/></a></c:if>
-                    <c:if test="${id != i}"><a href="/document/favorite/${i}"><c:out value="${i}"/></a></c:if>
-                </td>
-            </c:forEach>
-        </tr>
-    </table>
+
 </c:if>
 <p>${message}</p>
 </body>
